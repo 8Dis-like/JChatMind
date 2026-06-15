@@ -1,0 +1,32 @@
+# === OS artifacts ===
+.DS_Store
+__MACOSX/
+Thumbs.db
+
+# === Java / Maven ===
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+.mvn/wrapper/maven-wrapper.jar
+
+# === IDE ===
+.idea/
+*.iml
+.vscode/
+*.swp
+*.swo
+*~
+
+# === Node / Frontend ===
+node_modules/
+dist/
+.env
+.env.local
+.env.*.local
+
+# === Misc ===
+*.bak
+*.tmp
