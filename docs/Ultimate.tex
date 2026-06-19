@@ -1,0 +1,107 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=0.5in]{geometry}
+
+% Section formatting - No bolding or horizontal lines
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}
+
+\begin{document}
+
+\begin{center}
+    {\huge Hao Zhang} \\ \vspace{5pt}
+    \small (+1) 213-773-5552 $|$ \href{mailto:ezugho@outlook.com}{ezugho@outlook.com} $|$
+    \href{https://github.com/8Dis-like}{github.com/8Dis-like} $|$
+    Los Angeles, CA
+\end{center}
+
+\section{Summary}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+        Full-stack Software Engineer with strong Java and Spring Boot experience, specializing in AI-integrated backend systems and scalable web applications.
+        Proven ability to design and implement production-ready RESTful APIs, build end-to-end RAG pipelines with vector database integration, and deliver complete features across the full development lifecycle.
+        Combines deep understanding of modern AI/LLM technologies with hands-on React/TypeScript frontend skills, well-suited for fast-paced Agile teams building intelligent software products.
+    }
+\end{itemize}
+
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+        University of California, Los Angeles (UCLA) $|$ Los Angeles, CA \\
+        Master of Engineering (MEng) $|$ GPA: 3.92/4.0 \hfill Expected August 2026
+    }
+    \item{
+        Wuhan University $|$ Wuhan, China \\
+        B.E., Spatial Informatics and Digitalized Technology $|$ GPA: 3.8/4.0 \hfill June 2025
+    }
+\end{itemize}
+
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+        \textbf{Backend \& Frameworks:} Java 17, Spring Boot 3.5, Spring AI 1.1, MyBatis, Maven, RESTful API, SSE (Server-Sent Events), FastAPI, Swagger, Postman \\
+        \textbf{AI \& ML:} RAG Pipelines, Vector Databases (pgvector), Embeddings (BGE-M3), LLM Agent Architecture, LangGraph, PyTorch, Transformers, LoRA/QLoRA, TensorRT, Weights \& Biases \\
+        \textbf{Frontend:} React 19, TypeScript 5.9, JavaScript, Ant Design, HTML5, CSS, Node.js \\
+        \textbf{Data \& Databases:} PostgreSQL, pgvector, MySQL, SQL, MongoDB (familiar) \\
+        \textbf{DevOps \& Cloud:} Docker, Kubernetes, AWS (EC2, S3, ECS, ECR), Terraform, GitHub Actions, CI/CD, Jenkins, Linux \\
+        \textbf{Languages:} Java, Python, C++, C, Golang, TypeScript, JavaScript, SQL, Bash
+    }
+\end{itemize}
+
+\section{Technical Projects}
+
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+        \href{https://github.com/8Dis-like/JChatMind}{JChatMind}: Full-Stack AI Agent System with RAG Pipeline \hfill June 2026 -- Present \\ \emph{Java 17, Spring Boot, Spring AI, React, TypeScript, PostgreSQL, pgvector, MyBatis, Maven}
+        \begin{itemize}[leftmargin=0.25in, label={$\bullet$}]
+            \item Built a production-grade AI agent platform on \textbf{Spring Boot 3.5 + Spring AI 1.1} with a \textbf{React 19 / TypeScript} frontend, delivering 12+ RESTful API endpoints for agent CRUD, chat sessions, knowledge base management, and document upload.
+            \item Implemented an autonomous \textbf{Think--Execute--Observe} agent loop driven by a state machine (\texttt{IDLE} $\to$ \texttt{THINKING} $\to$ \texttt{EXECUTING} $\to$ \texttt{FINISHED}), with a configurable 20-step guard to prevent infinite execution cycles.
+            \item Designed an end-to-end \textbf{RAG pipeline}: Markdown parsing (flexmark) $\to$ semantic chunking $\to$ BGE-M3 embeddings via Ollama $\to$ pgvector cosine similarity retrieval $\to$ top-K context injection into agent system prompts.
+            \item Engineered a \textbf{multi-model registry pattern} (\texttt{ChatClientRegistry}) decoupling LLM providers from business logic, enabling per-agent model selection with zero-change extensibility for new providers.
+            \item Developed an extensible \textbf{tool system} (DatabaseQuery, EmailSender, FileSystem, KnowledgeRAG) as Spring beans with \texttt{@Tool} annotation-driven auto-registration via IoC container.
+            \item Streamed real-time agent lifecycle events and tool invocation results to the frontend via \textbf{Server-Sent Events (SSE)}, providing live observability of multi-step agent reasoning.
+            \item Implemented \textbf{MyBatis + PostgreSQL + pgvector} data layer with custom \texttt{PgVectorTypeHandler} for transparent \texttt{float[] $\leftrightarrow$ vector} type mapping across the persistence layer.
+        \end{itemize}
+    }
+
+    \item{
+        Idiolect: Generative AI Workflow Engine \& Cloud Architecture \hfill May 2026 -- Present \\ \emph{Python, AWS, Docker, Terraform, FastAPI, LangGraph, Git}
+        \begin{itemize}[leftmargin=0.25in, label={$\bullet$}]
+            \item Architected a distributed AI backend system exposing scalable REST APIs to orchestrate autonomous agentic workflows via LangGraph and LLM APIs, enabling multi-file codebase evaluation through automated self-correction loops.
+            \item Deployed full-stack container infrastructure across AWS ECS fleets, utilizing multi-stage Docker builds and Terraform Infrastructure-as-Code to guarantee 100\% operational environment reproducibility.
+            \item Maintained operational excellence by profiling backend execution layers with PyTorch Profiler, isolating CPU-bound loading stalls and implementing multi-worker prefetching for a 2.1x processing speedup.
+        \end{itemize}
+    }
+
+    \item{
+        Travel History Reconstruction: End-to-End Data Intelligence Pipeline \hfill May 2026 -- Present \\ \emph{Python, OCR, NLP, Pattern Recognition}
+        \begin{itemize}[leftmargin=0.25in, label={$\bullet$}]
+            \item Designed an AI system to analyze passport document images, extracting countries, dates, and entry/exit events to build structured chronological timelines.
+            \item Implemented image enhancement and preprocessing techniques critical for maintaining OCR accuracy despite high variability in stamp and visa image quality.
+            \item Developed a functional prototype and API to deliver explainable JSON outputs, associating each record with extraction timestamps and passenger identifiers.
+        \end{itemize}
+    }
+
+    \item{
+        Multi-Modal Loop Closure Detection for SLAM \hfill Jan. 2024 -- Sept. 2024 \\ \emph{C++, Python, PyTorch, IROS 2024}
+        \begin{itemize}[leftmargin=0.25in, label={$\bullet$}]
+            \item Devised a multi-modal perception algorithm fusing RGB features with point cloud geometry to achieve a 20\% improvement in recall rate over prior state-of-the-art.
+            \item Engineered a real-time loop closure detection pipeline operating at 30 FPS using CNN-learned binary descriptors for efficient candidate retrieval in large-scale SLAM systems.
+            \item Optimized feature extraction and matching modules, reducing average latency from 45ms to 18ms per frame through multi-threading and SIMD vectorization.
+        \end{itemize}
+    }
+\end{itemize}
+
+\section{Publication}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \item{
+        Wang, J., Gao, Z., Lin, Z., Zhou, Z., Wang, X., Cheng, J., \textbf{Zhang, H.}, Liu, X., and Chen, B. (2024). Accurate and Efficient Loop Closure Detection with Deep Binary Image Descriptor and Augmented Point Cloud Registration. IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS).
+    }
+\end{itemize}
+
+\end{document}
