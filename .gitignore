@@ -30,6 +30,15 @@ dist/
 # === Build artifacts ===
 _build/
 
+# === Large binaries ===
+*.exe
+*.msi
+*.zip
+*.tar.gz
+
+# === Secrets ===
+jchatmind/src/main/resources/application.yaml
+
 # === Misc ===
 *.bak
 *.tmp
