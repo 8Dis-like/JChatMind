@@ -25,10 +25,11 @@ interface DefaultAgentChatViewProps {
 }
 
 const EmptyAgentChatView: React.FC<DefaultAgentChatViewProps> = ({
-  loading,
+  loading: parentLoading,
   agents,
 }) => {
   const [message, setMessage] = useState("");
+  const [localLoading, setLocalLoading] = useState(false);
   const [selectedAgentId, setSelectedAgentId] = useState<string | null>(null);
 
   const navigate = useNavigate();
@@ -154,27 +155,35 @@ const EmptyAgentChatView: React.FC<DefaultAgentChatViewProps> = ({
         <div className="px-4 pb-4 pt-4">
           <Sender
             onSubmit={async () => {
-              if (!effectiveAgentId) return;
-              console.log("发送消息", message);
-              const response = await createChatSession({
-                agentId: effectiveAgentId,
-                title: message.slice(0, 20),
-              });
-              await createChatMessage({
-                sessionId: response.chatSessionId ?? "",
-                content: message,
-                role: "user",
-                agentId: effectiveAgentId,
-              });
-              // 刷新聊天会话列表
-              await refreshChatSessions();
-              setMessage("");
-              navigate(
-                `/chat/${response.chatSessionId}`,
-              );
+              if (!effectiveAgentId || !message.trim()) return;
+              setLocalLoading(true);
+              try {
+                console.log("发送消息", message);
+                const response = await createChatSession({
+                  agentId: effectiveAgentId,
+                  title: message.slice(0, 20),
+                });
+                await createChatMessage({
+                  sessionId: response.chatSessionId ?? "",
+                  content: message,
+                  role: "user",
+                  agentId: effectiveAgentId,
+                });
+                // 刷新聊天会话列表
+                await refreshChatSessions();
+                setMessage("");
+                navigate(
+                  `/chat/${response.chatSessionId}`,
+                );
+              } catch (error) {
+                console.error("发送失败:", error);
+                // antdMessage.error("发送失败，请检查网络或后端服务");
+              } finally {
+                setLocalLoading(false);
+              }
             }}
             value={message}
-            loading={loading}
+            loading={parentLoading || localLoading}
             placeholder="输入消息开始对话..."
             onChange={(value) => {
               setMessage(value);

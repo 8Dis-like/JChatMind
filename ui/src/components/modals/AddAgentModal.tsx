@@ -102,6 +102,7 @@ const AddAgentModal: React.FC<AddAgentModalProps> = ({
   // 获取工具列表
   useEffect(() => {
     async function fetchTools() {
+      if (!open) return;
       try {
         const resp = await getOptionalTools();
         setTools(resp.tools);
@@ -111,7 +112,7 @@ const AddAgentModal: React.FC<AddAgentModalProps> = ({
     }
 
     fetchTools().then();
-  }, []);
+  }, [open]);
 
   const isEditMode = !!editingAgent;
 
